@@ -1,7 +1,7 @@
 from django.db import models
 
+
 # Create your models here.
-from django.db.models.signals import post_save
 
 
 class TimestampableMixin(models.Model):
@@ -19,10 +19,15 @@ class Product(TimestampableMixin):
     stock = models.IntegerField(default=-0)
     stock_max = models.IntegerField()
     price_sale = models.DecimalField(decimal_places=2, max_digits=6)
-    price_purchase = models.DecimalField(decimal_places=2, max_digits=6)    
+    price_purchase = models.DecimalField(decimal_places=2, max_digits=6)
 
     def __str__(self):
         return self.name
+
+    def decrement(self, amount):
+        if self.stock - amount < 0:
+            raise ValueError('Sem estoque disponível')
+        self.stock = self.stock - amount
 
     # receptor do signal, metodo static através da anotation classmethod
     # @classmethod

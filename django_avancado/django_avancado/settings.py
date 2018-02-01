@@ -25,7 +25,7 @@ SECRET_KEY = '6^kjx7++w8n(8ubr)t&c=n2rqqdb1@(dtbj4ikozt1_b#xzn**'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver']
 
 
 # Application definition
@@ -119,3 +119,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'aa4516623085bc'
+EMAIL_HOST_PASSWORD = '2f50d5b3b0e2f3'
+EMAIL_PORT = '2525'
+EMAIL_REPLY = 'admin@django-avancado.com.br'
+EMAIL_BOSS = 'boss@django-avancado.com.br'
